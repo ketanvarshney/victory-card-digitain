@@ -40,7 +40,7 @@ export const saveWalletTransaction = async ({ id, transactionId, amount, transac
                 let saveData = await playerModel.findOneAndUpdate({_id: user._id}, {$set: userBalanceUpdate}, { new: true });
                 dbLog(`SET, req: UPDATE_PLAYER_IN_TRANSACTION, data: ${JSON.stringify(saveData)}`);
 
-                let transactionSave = new transactionModel({
+                let transactionSave = {
                 userId: id,
                 amount: amount,
                 transactionType: transactionType,
@@ -48,8 +48,7 @@ export const saveWalletTransaction = async ({ id, transactionId, amount, transac
                 status: status,
                 balance: saveData.balance,
                 transactionId: transactionId,
-                // createdDate: new Date(),
-                });
+                };
                 let transactionSaved = await transactionModel.create(transactionSave);
         
                 let savedObj = {

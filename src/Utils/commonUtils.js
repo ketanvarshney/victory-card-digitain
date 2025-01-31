@@ -66,12 +66,14 @@ export const hasDateChanged = (epoch1, epoch2) => {
 
 export const saveToPending = async (data, requestType, userId) => {
     try {
-        const isPendingData = await pendingModel.findOneAndUpdate({ transactionId: data.transactionid }, { $set: { timestamp: Math.floor(new Date().getTime() / 1000), nextCall: Math.floor(new Date().getTime() / 1000) }}, { new: true });
+        const transctionId = data.transactionId ? data.transactionId : data.transactionid;
+        
+        const isPendingData = await pendingModel.findOneAndUpdate({ transactionId: transctionId }, { $set: { timestamp: Math.floor(new Date().getTime() / 1000), nextCall: Math.floor(new Date().getTime() / 1000) }}, { new: true });
         if(!isPendingData) {
             let pendingData = {
                 userId: userId,
                 type: requestType,
-                transactionId: data.transactionid,
+                transactionId: transctionId,
                 request: JSON.stringify(data),
                 nextCall: Math.floor(new Date().getTime() / 1000) + 60,
                 timestamp: Math.floor(new Date().getTime() / 1000),

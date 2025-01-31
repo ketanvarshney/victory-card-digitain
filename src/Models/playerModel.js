@@ -58,18 +58,15 @@ const palyerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    createdDate: {
-        type: Number,
-    },
-    lastUpdatedDate: {
-        type: Number,
-    },
     totalGameCount: { type: Number, default: 0 },
     todayGameCount: { type: Number, default: 0 },
     isBanned: {
         type: Boolean,
         default: false,
-    }
+    },
+    createdDate: {
+        type: Number,
+    },
 
 }, {timestamps: true});
 

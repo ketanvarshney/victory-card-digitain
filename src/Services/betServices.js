@@ -12,7 +12,6 @@ import {  getTodayDateTime, getRandomNumber, postRequestWithoutRetry } from "../
 const ObjectId = mongoose.Types.ObjectId;
 const winServices = new Win;
 
-
 class betServices {
     async userBet( userId, betAmount, operationType, user, betType) { 
         try{
@@ -35,7 +34,6 @@ class betServices {
 
                 return { ...gamePlayData, balance : updatedData.balance }
             }
-                // return gamePlayData; }
 
         } catch(err) {
             logError(err);
@@ -70,7 +68,6 @@ class betServices {
                 currency: user.currency
             } 
             
-            // let gameDataResult = await gameModel.findOneAndUpdate({_id: '679b77a6dd143331d050d460'}, {$set: {betAmount: gameData.betAmount}}, { new: true });
             let gameDataResult = await gameModel.create(gameData);
             console.log('GAME_DATA_RESULT.....', gameDataResult); 
             let bet = await this.betRequest(transactionId, user, betAmount, gameDataResult);

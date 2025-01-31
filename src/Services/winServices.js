@@ -27,11 +27,9 @@ class winServices {
             let win = await this.winRequest(transactionId, user, winAmount, gameData);
 
             if(win === null || win === undefined || win === "") {
-                // saveTransaction.status = 'FAILED';
-                // saveTransaction.apiError = true;
 
                 // Update the transaction when an api error occurs.
-                let transactionSave = new transactionModel({
+                let transactionSave = {
                     userId: saveTransaction.id,
                     amount: saveTransaction.amount,
                     transactionType: saveTransaction.transactionType,
@@ -40,8 +38,7 @@ class winServices {
                     balance: user.balance,
                     transactionId: transactionId,
                     apiError: true,
-                    // createdDate: new Date(),
-                });
+                };
                 
                 await transactionModel.create(transactionSave);
                 return {status: 'ERROR', ...win};
@@ -59,7 +56,6 @@ class winServices {
                 betAmount: updatedGame.data.betAmount,
                 winAmount: updatedGame.data.winAmount,
                 currency: updatedGame.data.currency,
-                // option: updatedGame.data.option,
             }
 
             redisClient.lpush(`${redisDB}:queue`, JSON.stringify(winData));

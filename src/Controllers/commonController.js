@@ -99,12 +99,11 @@ const bet = async (req, res) => {
     try{
         let { token, betAmount, userId, betType, timestamp } = JSON.parse(req.body.data);
         const timeStamp = timestamp;
-        // console.log(token, betAmount, userId, betType, timeStamp, req.body)
         
         if ( !userId || !token || !betType || !isValidTwoDecimalNumber(betAmount) || !timeStamp) { 
             return res.status(400).json({status: 'ERROR', message: 'Bad Request: Required fields is missing or empty', error: null});
         } 
-        console.log('reee')
+
         const verifyToken = playerServices.isTokenValid(userId, token);
         
         if(!verifyToken){
@@ -120,7 +119,7 @@ const bet = async (req, res) => {
             return res.status(409).json({status: 'UNAUTHORIZED', message: 'Bad Request: Previous session is opened. Please close the previous game or start the game from the lobby...', data: checkSession});
         }
 
-        if(betType != "red" && betType != "black" && betType != "Spade" && betType != "Heart" && betType != "Diamond" && betType != "Club"){
+        if(betType != "red" && betType != "black" && betType != "Spades" && betType != "Heart" && betType != "Diamond" && betType != "Club"){
             return res.status(401).json({status: "ERROR", message: "Wrong Input!", data: null});
         }
         

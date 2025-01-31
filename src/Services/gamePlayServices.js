@@ -76,14 +76,11 @@ export const gamePlay = async ( betAmount, betType, user) => {
  
    // Add winnings to balance and ensure two decimal places
    currentBalance += totalWin;
-   console.log(currentBalance, 'balaaaa1')
    currentBalance = parseFloat(currentBalance.toFixed(2));
-   console.log(currentBalance, 'balaaaa')
  
    // Prepare result object
    let result = {
      status: "SUCCESS",
-    //  userId: userId,
      drawnCard: randomCard,
      betType: betType,
      betAmount: betAmount.toString(),
@@ -92,22 +89,5 @@ export const gamePlay = async ( betAmount, betType, user) => {
      isWin: totalWin > 0,
    };
  
-  //  // Record the game in the database
-  //  const gameRecord = new CardGame({
-  //    userId: new ObjectId(userId),
-  //    betAmount: betAmount,
-  //    gameType: betType ,
-  //    DrawnCard: {
-  //      value: randomCard.Value,
-  //      suit: randomCard.Type,
-  //      color: randomCard.Color,
-  //    },
-  //    result: totalWin > 0 ? 'win' : 'lose',
-  //    winAmount: totalWin,
-  //  });
- 
-  //  const gameRecordData = await gameRecord.save(); // Save to the database
-  //  result.gameId = gameRecordData._id;
- 
-   return result; // Return the result to the caller
+   return result; 
  };

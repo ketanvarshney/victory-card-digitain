@@ -10,8 +10,8 @@ async function runCronJob() {
     const lockKey = `${redisDB}-CRONLOCK:cron-lock`;
     const lockValue = Date.now();
 
-    // Try acquiring the lock with a TTL of 30 sec
-    const acquired = await redisClient.set(lockKey, lockValue, "NX", "EX", 30);
+    // Try acquiring the lock with a TTL of 55 sec
+    const acquired = await redisClient.set(lockKey, lockValue, "NX", "EX", 55);
 
     if (!acquired) {
         console.log("Another instance is running the cron job. Skipping...");
