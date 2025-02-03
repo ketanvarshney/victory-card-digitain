@@ -137,7 +137,7 @@ export const postRequestWithoutRetry = async (data, requestType) => {
         console.log('API_RES>>', response.data);
         
         if(response.data.errorcode !== 1 && requestType === 'bet'){
-            
+            logErrorMessage(`${JSON.stringify(response.data)}`);
             throw new Error(`${JSON.stringify(response.data)}`);
         }
 

@@ -1,5 +1,3 @@
-import axios from 'axios';
-import jwt from 'jsonwebtoken';
 import {infoLog, logError, apiLog} from '../LogConfig/index.js'
 import GameLaunch from '../Services/gameLaunchServices.js';
 import Bet from '../Services/betServices.js';
@@ -44,8 +42,8 @@ const gamesLaunch = async (req, res) => {
         
         const updatedUrl = `${process.env.BASE_URL}?userId=${gameResult.userId}&token=${gameResult.token}`
         
-        return res.status(200).send(updatedUrl);
-        // return res.status(200).redirect(updatedUrl);
+        // return res.status(200).send(updatedUrl);
+        return res.status(200).redirect(updatedUrl);
         
     }catch(err) {   
         console.log('ERROR :::::', err.stack ? err.stack : err);
