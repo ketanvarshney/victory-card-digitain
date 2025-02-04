@@ -41,7 +41,8 @@ class gameLaunchServices {
                 playerId: playerData.playerId,
                 playerToken: playerData.token,
                 currency: playerData.currency,
-                createdDate: Math.floor(new Date().getTime() / 1000)
+                createdDate: Math.floor(new Date().getTime() / 1000),
+                lastUpdatedDate: Math.floor(new Date().getTime() / 1000)
             }
             dbLog(`SET, req: REGISTER, data: ${JSON.stringify(player)}`);
             
@@ -105,6 +106,7 @@ class gameLaunchServices {
                 playerToken: playerData.token,
                 token: token,
                 currency: playerData.currency,
+                lastUpdatedDate: Math.floor(new Date().getTime() / 1000),
                 todayGameCount: isDateChanged ? 0 : player.todayGameCount,
             }
             dbLog(`SET, req: LOGIN, playerId: ${playerData.playerId}, data: ${JSON.stringify(currentData)}`);

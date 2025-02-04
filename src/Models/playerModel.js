@@ -67,6 +67,9 @@ const palyerSchema = new mongoose.Schema({
     createdDate: {
         type: Number,
     },
+    lastUpdatedDate: {
+        type: Number
+    }
 
 }, {timestamps: true});
 
