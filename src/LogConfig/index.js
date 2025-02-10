@@ -36,7 +36,6 @@ const saveLogs = (message, fileName) => {
 }
 
 export function infoLog (message) {
-    console.log(message);
     saveLogs(message, 'info')
 }
 

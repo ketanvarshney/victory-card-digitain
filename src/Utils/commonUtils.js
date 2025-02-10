@@ -39,13 +39,6 @@ export const getRandomNumber = (digit) => {
     return Math.random().toFixed(digit).split('.')[1];
 };
 
-export const generateSignatureGameLaunch = (data) => {
-    data = JSON.stringify(data);
-    console.log(data, 'data1');
-    data = data.replaceAll(":", ": ").replaceAll(",", ", ").replaceAll(": //", "://");
-    return generateSignature(process.env.API_SECRET_KEY, data);
-}
-
 export const hasDateChanged = (epoch1, epoch2) => {
     // Convert seconds to milliseconds
     const date1 = new Date(epoch1 * 1000);

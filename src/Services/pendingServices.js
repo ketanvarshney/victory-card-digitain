@@ -8,7 +8,7 @@ import pendingHistoryModel from '../Models/pendingHistoryModel.js'
 import refundModel from '../Models/refundModel.js'
 import winModel from '../Models/winModel.js'
 import masterModel from '../Models/masterModel.js';
-import { generateSignatureGameLaunch, hasDateChanged, updateUserGameData } from "../Utils/commonUtils.js";
+import { hasDateChanged, updateUserGameData } from "../Utils/commonUtils.js";
 
 class pendingServices {
     async pendingPostRequest(data, requestType, timeout = 10000) {

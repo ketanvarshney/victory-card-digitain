@@ -3,7 +3,7 @@ import { logError, dbLog } from "../LogConfig/index.js";
 import playerModel from '../Models/playerModel.js';
 import masterModel from '../Models/masterModel.js';
 import { redisClient, redisDB } from '../DbConfig/redisConnection.js';
-import { generateSignatureGameLaunch, hasDateChanged } from "../Utils/commonUtils.js";
+import {  hasDateChanged } from "../Utils/commonUtils.js";
 
 class gameLaunchServices {
     async gameLaunch(data, playerData) {
